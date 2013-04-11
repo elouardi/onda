@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">Header</div>
+
+
+<h:form id="form">  
+  
+    <p:dataTable var="fac" value="#{facBean.fac}" rowKey="#{fac.model}" paginator="true" rows="10"  
+                selection="#{facBean.selectedfac}" selectionMode="single" filteredValue="#{facBean.filteredfac}" id="facTable">  
+  
+        <p:ajax event="rowSelect" update=":form:display" oncomplete="facDialog.show()" />  
+  
+        <f:facet name="header">  
+            Listes des factures 
+        </f:facet>  
+  
+        <p:column headerText="N° Facture" sortBy="#{fac.model}" filterBy="#{fac.model}" id="numfac">  
+            #{fac.numfac}  
+        </p:column> 
+        
+        <p:column headerText="Frs" sortBy="#{fac.frs}" filterBy="#{fac.frs}" id="frs">  
+            #{fac.frs}  
+        </p:column> 
+  
+        <p:column headerText="datefac" sortBy="#{fac.datefac}" filterBy="#{fac.datefac}" id="datefac">  
+            #{fac.datefac}  
+        </p:column>  
+  
+        <p:column headerText="Doc Engagement" sortBy="#{fac.doceng}" filterBy="#{fac.doceng}" id="doceng">  
+            #{fac.doceng}  
+        </p:column>  
+         
+       <p:column headerText="Memo" sortBy="#{fac.memo}" filterBy="#{fac.memo}" id="memo">  
+            #{fac.memo}"  
+        </p:column> 
+        
+        <p:column headerText="Montant" sortBy="#{fac.mtfac}" filterBy="#{fac.mtfac}" id="mtfac">  
+            #{fac.mtfac}"  
+        </p:column> 
+        
+         <p:column headerText="Devise" sortBy="#{fac.devise}" filterBy="#{fac.devise}" id="devise">  
+            #{fac.devise}"  
+        </p:column>  
+        
+        <p:column headerText="Statut" sortBy="#{fac.statu}" filterBy="#{fac.statu}" id="statu">  
+            #{fac.statu}"  
+        </p:column>
+      
+    </p:dataTable>  
+  
+</h:form> 
+
+</h:body>
+</html>

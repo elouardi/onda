@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.hibernate.tutorial.hbm">
+	<class name="Service" table="Service" lazy="false">
+		<id name="id_Serv" column="Id_Serv" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="facture" class="Facture" cascade="all">
+            <column name="id_Fac" not-null="true" />
+        </many-to-one>
+		
+		<property name="libelle" column="Libelle" type="string" length="255" not-null="false" lazy="false"/>
+		
+		<set name="users" table="Service" 
+				inverse="true" lazy="true" cascade="all">
+            <key>
+                <column name="Id_Serv" not-null="true" />
+            </key>
+            <one-to-many class="User" />
+        </set>
+		
+		
+		
+	</class>
+</hibernate-mapping>

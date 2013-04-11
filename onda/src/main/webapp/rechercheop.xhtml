@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">Header</div>
+
+
+<h:form id="form">  
+  
+    <p:dataTable var="op" value="#{opBean.op}" rowKey="#{op.model}" paginator="true" rows="10"  
+                selection="#{opBean.selectedop}" selectionMode="single" filteredValue="#{opBean.filteredop}" id="opTable">  
+  
+        <p:ajax event="rowSelect" update=":form:display" oncomplete="opDialog.show()" />  
+  
+        <f:facet name="header">  
+            Listes des ordres de paiement
+        </f:facet>  
+  
+        <p:column headerText="N° OP" sortBy="#{op.model}" filterBy="#{op.model}" id="numop">  
+            #{op.numop}  
+        </p:column> 
+        
+        <p:column headerText="Benf" sortBy="#{op.benf}" filterBy="#{op.benf}" id="benf">  
+            #{op.benf}  
+        </p:column> 
+  
+        <p:column headerText="dateop" sortBy="#{op.dateop}" filterBy="#{op.dateop}" id="dateop">  
+            #{op.dateop}  
+        </p:column>  
+  
+        <p:column headerText="Objet" sortBy="#{op.obj}" filterBy="#{obj.obj}" id="obj">  
+            #{op.obj}  
+        </p:column>  
+         
+       <p:column headerText="Montant" sortBy="#{op.mtop}" filterBy="#{op.mtop}" id="mtop">  
+            #{op.mtop}"  
+        </p:column> 
+     
+    </p:dataTable>  
+  
+</h:form> 
+
+</h:body>
+</html>
+

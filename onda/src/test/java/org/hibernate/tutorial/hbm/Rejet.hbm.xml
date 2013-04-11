@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.hibernate.tutorial.hbm">
+	<class name="Rejet" table="Rejet" lazy="false">
+		<id name="id_Rejet" column="Id_Rejet" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<one-to-one name="ordrePaiement" class="OrdrePaiement"	constrained="true"></one-to-one>
+		<property name="date_Rejet" column="Date_Rejet" type="date" not-null="true" lazy="false"/>	
+		<property name="dir_Con" column="Dir_Con" type="string" length="255" not-null="true" lazy="false"/>
+		
+		 <set name="motifs" table="Motif" 
+				inverse="true" lazy="true" cascade="all">
+            <key>
+                <column name="id_Rejet" not-null="true" />
+            </key>
+            <one-to-many class="Motif" />
+        </set>
+		</class>
+</hibernate-mapping>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.hibernate.tutorial.hbm">
+	<class name="Facture" table="Facture" lazy="false">
+		<id name="id_Fac" column="Id_Fac" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>		
+		 <many-to-one name="op" class="OrdrePaiement" cascade="all">
+            <column name="id_Op" not-null="true" />
+         </many-to-one>   
+		
+		<many-to-one name="fournisseur" class="Fournisseur" cascade="all">
+            <column name="id_Frs" not-null="true" />
+        </many-to-one>    
+		
+		<property name="doceng" column="Doceng" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="date_Fac" column="Date_Fac" type="date" not-null="true" lazy="false"/>
+		<property name="mt_Fac" column="Mt_Fac" type="float" not-null="true" lazy="false"/>
+		<property name="statu_Fac" column="Statu_Fac" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="devise_Fac" column="Devise_Fac" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="delai_Fac" column="Delai_Fac" type="integer" not-null="true" lazy="false"/>
+		
+		<set name="journals" table="Journal" 
+				inverse="true" lazy="true" cascade="all">
+            <key>
+                <column name="id_Fac" not-null="true" />
+            </key>
+            <one-to-many class="Journal" />
+        </set>
+		
+		
+		<set name="historiques" table="HistoriqueFacture" 
+				inverse="true" lazy="true" cascade="all">
+            <key>
+                <column name="id_Fac" not-null="true" />
+            </key>
+            <one-to-many class="HistoriqueFacture" />
+        </set>
+		
+		<set name="services" table="Service" 
+				inverse="true" lazy="true" cascade="all">
+            <key>
+                <column name="id_Fac" not-null="true" />
+            </key>
+            <one-to-many class="Service" />
+        </set>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">Header</div>
+
+
+<h:form id="form">  
+  
+    <p:dataTable var="rejet" value="#{rejetBean.op}" rowKey="#{rejet.model}" paginator="true" rows="10"  
+                selection="#{rejetBean.selectedrejet}" selectionMode="single" filteredValue="#{rejetBean.filteredop}" id="rejetTable">  
+  
+        <p:ajax event="rowSelect" update=":form:display" oncomplete="opDialog.show()" />  
+  
+        <f:facet name="header">  
+            Listes des rejets
+        </f:facet>  
+  
+        <p:column headerText="N° Rejet" sortBy="#{rejet.model}" filterBy="#{rejet.model}" id="numrejet">  
+            #{rejet.numrejet}  
+        </p:column> 
+        
+          
+        <p:column headerText="daterejet" sortBy="#{rejet.daterejet}" filterBy="#{rejet.daterejet}" id="daterejet">  
+            #{rejet.daterejet}  
+        </p:column>  
+  
+             
+    </p:dataTable>  
+  
+</h:form> 
+
+</h:body>
+</html>
+

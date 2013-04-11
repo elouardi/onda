@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.hibernate.tutorial.hbm">
+	<class name="HistoriqueFacture" table="HistoriqueFacture" lazy="false">
+		<id name="idHistorique" column="IdHistorique" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="facture" cascade="all">
+		</many-to-one>
+		<property name="action" column="Action" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="dateRecp" column="DateRecp" type="date" not-null="false" lazy="true"/>
+		<property name="entite" column="Entite" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="dateEnvoi" column="DateEnvoi" type="date" not-null="true" lazy="false"/>
+	</class>
+</hibernate-mapping>

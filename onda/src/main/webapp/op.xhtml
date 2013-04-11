@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+
+<h:body>
+<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">Header</div>
+
+<h:form id="form">  
+  
+  <ui:composition template="template/template.xhtml"> 		 
+ 
+ <ui:define name="content">
+    <p:panel id="panel" header="OP" style="margin-bottom:20px;">  
+        <p:messages id="messages" />  
+          <h:panelGrid columns="2"> 
+          
+            <h:outputLabel for="benf" value="Béneficiare Final: " />  
+            <p:inputText id="benf" value="#{opBean.benf}" required="true" label="Béneficiare Final"/>  
+            <p:message for="benf" />  
+            <h:outputText value="#{opBean.benf}" /> 
+          
+            <h:outputLabel for="numop" value="N° OP: " />  
+            <p:inputText id="numop" value="#{opBean.numop}" required="true" label="N° OP">  
+                <f:validateLength minimum="2" />  
+            </p:inputText>  
+            <p:message for="numop" />  
+            <h:outputText value="#{opBean.numop}" />  
+           
+            <h:outputLabel for="dateop" value="Date OP: " /> 
+            <p:calendar value="#{opBean.dateop}" id="dateop" />
+            <p:message for="dateop" />  
+            <h:outputText value="#{opBean.dateop}" />  
+            <p:message for="dateop" />  
+            <h:outputText value="#{opBean.dateop}" /> 
+           
+            <h:outputLabel for="obj" value="Objet:" /> 
+            
+            <p:inputText id="obj" value="#{opBean.obj}" required="true" label="Objet"/>  
+            <p:message for="obj" />  
+            <h:outputText value="#{opBean.obj}" /> 
+            
+                        
+            <h:outputLabel for="mttotal" value="Montant Total: " />  
+            <p:inputText id="mttotal" value="#{opBean.mttotal}" required="true" label="Montant Total"/>  
+            <p:message for="mttotal" />  
+            <h:outputText value="#{opBean.mttotal}" />
+            
+            <h:outputLabel for="deduc" value="Déduction: " />  
+            <p:inputText id="deduc" value="#{opBean.deduc}" required="true" label="Déduction"/>  
+            <p:message for="deduc" />  
+            <h:outputText value="#{opBean.deduc}" />
+            
+            <h:outputLabel for="mtop" value="Montant OP: " />  
+            <p:inputText id="mtop" value="#{opBean.mtop}" required="true" label="Montant OP"/>  
+            <p:message for="mtop" />  
+            <h:outputText value="#{opBean.mtop}" />
+            
+            
+            <h:outputLabel for="datebc" value="Date de Banque: " /> 
+            <p:calendar value="#{opBean.datebc}" id="datebc" />
+            <p:message for="datebc" />  
+            <h:outputText value="#{opBean.datebc}" />  
+            <p:message for="datebc" />  
+            <h:outputText value="#{opBean.datebc}" />
+            
+                 
+            <h:outputLabel for="datesign" value="Date Trésorerie Payeur: " /> 
+            <p:calendar value="#{opBean.datesign}" id="datesign" />
+            <p:message for="datesign" />  
+            <h:outputText value="#{opBean.datesign}" />  
+            <p:message for="datesign" />  
+            <h:outputText value="#{opBean.datesign}" />
+            
+            <h:outputLabel for="datedg" value="Date de Banque: " /> 
+            <p:calendar value="#{opBean.datedg}" id="datedg" />
+            <p:message for="datedg" />  
+            <h:outputText value="#{opBean.datedg}" />  
+            <p:message for="datedg" />  
+            <h:outputText value="#{opBean.datedg}" />
+     
+        </h:panelGrid>  
+          </p:panel> 
+        <p:button value="Valider" actionListener="#{opBean.valider}" update="messages" icon="ui-icon-disk">  
+        <p:button value="Annuler" actionListener="#{opBean.annuler}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+        <p:button value="Approuvé" actionListener="#{opBean.approuver}" update="messages" icon="ui-icon-check"/>
+        <p:button value="Modifier" actionListener="#{opBean.modifier}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+        <p:button value="Remplacer" actionListener="#{opBean.remplacer}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+          
+        </p:button>
+        <p:commandButton value="Reset" type="reset"/> 
+    
+  	</ui:define>
+    </ui:composition>   
+</h:form>
+
+</h:body>
+</html>

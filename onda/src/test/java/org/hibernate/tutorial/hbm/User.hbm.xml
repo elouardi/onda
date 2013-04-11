@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.hibernate.tutorial.hbm">
+	<class name="User" table="User" lazy="false">
+		<id name="id_User" column="Id_User" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+			
+		<one-to-one name="profil" class="Profil" cascade="all" ></one-to-one>
+		
+		<many-to-one name="service" class="Service" cascade="all">
+            <column name="Id_Serv" not-null="true" />
+        </many-to-one>
+		
+		<property name="login" column="Login" type="integer" length="11" not-null="true" lazy="false"/>
+		<property name="pass" column="Pass" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="nomUser" column="NomUser" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="prenomUser" column="PrenomUser" type="string" length="255" not-null="false" lazy="false"/>
+		</class>
+</hibernate-mapping>
+

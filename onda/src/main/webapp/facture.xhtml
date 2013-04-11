@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+<div style="width:50%;font-size:15px;line-hieght:24px;background-color:blue;color:white">Menu</div>
+
+
+<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">Header</div>
+
+<h:form id="form">  
+  
+  <ui:composition template="template/template.xhtml"> 		 
+ 
+ <ui:define name="content">
+    <p:panel id="panel" header="Facture" style="margin-bottom:20px;">  
+        <p:messages id="messages" />  
+          <h:panelGrid columns="2"> 
+            <h:outputLabel for="numfac" value="N° Facture: " />  
+            
+            <p:inputText id="numfac" value="#{factureBean.numfac}" required="true" label="N° Facture">  
+                <f:validateLength minimum="2" />  
+            </p:inputText>  
+            <p:message for="numfac" />  
+            <h:outputText value="#{factureBean.numfac}" />  
+            <h:outputLabel for="datefac" value="Date Facture: " /> 
+            <p:calendar value="#{factureBean.datefac}" id="datefac" />
+            <p:message for="datefac" />  
+            <h:outputText value="#{factureBean.datefac}" />  
+            <p:message for="datefac" />  
+            <h:outputText value="#{factureBean.datefac}" /> 
+           
+            
+            <h:outputLabel for="frs" value="Fournisseur: " />  
+            <p:inputText id="frs" value="#{factureBean.frs}" required="true" label="Fournisseur"/>  
+            <p:message for="frs" />  
+            <h:outputText value="#{factureBean.frs}" /> 
+            
+            <h:outputLabel for="typedoc" value="Type Engagement:" />   
+            <h:selectOneMenu id="typedoc" value="#{factureBean.typedoc}" required="true">  
+             <f:selectItem itemLabel="" itemValue="" style="background-color: blue"/>
+                <f:selectItem itemLabel="MA" itemValue="MA" />  
+                 <f:selectItem itemLabel="BC" itemValue="BC" />
+                  <f:selectItem itemLabel="CONV" itemValue="CONV" />
+                   <f:selectItem itemLabel="CONT" itemValue="CONT" />
+                   <f:selectItem itemLabel="DB" itemValue="DB" />
+                   <f:selectItem itemLabel="LC" itemValue="LC" />
+                <f:selectItems value="#{factureBean.typedoc}" />  
+            </h:selectOneMenu>  
+             <p:message for="typedoc" />  
+            <h:outputText value="#{factureBean.typedoc}" /> 
+                     
+  
+            <h:outputLabel for="doceng" value="Réf Engagement:" /> 
+            
+            <p:inputText id="doceng" value="#{factureBean.doceng}" required="true" label="Doc Engagement"/>  
+            <p:message for="doceng" />  
+            <h:outputText value="#{factureBean.doceng}" /> 
+            
+                        
+            <h:outputLabel for="mtfac" value="Montant: " />  
+            <p:inputText id="mtfac" value="#{factureBean.mtfac}" required="true" label="Montant"/>  
+            <p:message for="mtfac" />  
+            <h:outputText value="#{factureBean.mtfac}" />
+            
+            <h:outputLabel for="devise" value="Devise: " />  
+            <h:selectOneMenu id="devise" value="#{factureBean.devise}" required="true">  
+             <f:selectItem itemLabel="" itemValue="" style="background-color: blue"/>
+                <f:selectItem itemLabel="MAD" itemValue="MAD" />  
+                 <f:selectItem itemLabel="£" itemValue="£" />
+                  <f:selectItem itemLabel="$" itemValue="$" />
+                   <f:selectItem itemLabel="Franc" itemValue="Franc" />
+                <f:selectItems value="#{factureBean.devise}" />  
+            </h:selectOneMenu>  
+            <p:message for="devise" />  
+            <h:outputText value="#{factureBean.devise}" /> 
+            
+            
+            <h:outputLabel for="memo" value="Mémo: " />  
+            <p:inputText id="memo" value="#{factureBean.memo}" required="true" label="Mémo"/>  
+            <p:message for="memo" />  
+            <h:outputText value="#{factureBean.memo}" />
+            
+            
+     
+        </h:panelGrid>  
+          </p:panel>  
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        <p:button value="Créer" actionListener="#{factureBean.enregister}" update="messages" icon="ui-icon-disk"/>  
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              
+        <p:button value="Annuler" actionListener="#{factureBean.supprimer}" ajax="false" icon="ui-icon-close"/>
+        
+  	</ui:define>
+    </ui:composition> 
+  
+</h:form>
+        
+
+</h:body>
+</html>

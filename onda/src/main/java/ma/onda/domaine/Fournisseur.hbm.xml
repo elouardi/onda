@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.hibernate.tutorial.hbm">
+	<class name="Fournisseur" table="Fournisseur" lazy="false">
+		<id name="id_Frs" column="Id_Frs" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="nom_Frs" column="Nom_Frs" type="string" length="255" not-null="false" lazy="false"/>
+		<set name="Factures" lazy="true" cascade="all">
+			<key column="FournisseurId_Frs" not-null="true"/>
+			<one-to-many class="Facture"/>
+		</set>
+	</class>
+</hibernate-mapping>

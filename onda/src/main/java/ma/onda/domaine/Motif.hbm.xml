@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.hibernate.tutorial.hbm">
+	<class name="Motif" table="Motif" lazy="false">
+		<id name="id_motif" column="Id_motif" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="rejet" cascade="all">
+		</many-to-one>
+		<property name="nom_Motif" column="Nom_Motif" type="string" length="255" not-null="false" lazy="false"/>
+	</class>
+</hibernate-mapping>

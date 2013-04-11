@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.hibernate.tutorial.hbm">
+	<class name="Facture" table="Facture" lazy="false">
+		<id name="id_Fac" column="Id_Fac" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="op" cascade="all">
+		</many-to-one>
+		<many-to-one name="fournisseur" cascade="all">
+		</many-to-one>
+		<property name="doceng" column="Doceng" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="date_Fac" column="Date_Fac" type="date" not-null="false" lazy="false"/>
+		<property name="mt_Fac" column="Mt_Fac" type="float" not-null="true" lazy="false"/>
+		<property name="statu_Fac" column="Statu_Fac" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="devise_Fac" column="Devise_Fac" type="string" length="255" not-null="false" lazy="false"/>
+		<set name="Journals" lazy="true" cascade="all">
+			<key column="FactureId_Fac" not-null="true"/>
+			<one-to-many class="Journal"/>
+		</set>
+		<set name="Historiques" lazy="true" cascade="all">
+			<key column="FactureId_Fac" not-null="true"/>
+			<one-to-many class="HistoriqueFacture"/>
+		</set>
+		<set name="Services" lazy="true" cascade="all">
+			<key column="FactureId_Fac" not-null="true"/>
+			<one-to-many class="Service"/>
+		</set>
+	</class>
+</hibernate-mapping>

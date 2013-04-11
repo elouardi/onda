@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: DuKe TeAm
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.hibernate.tutorial.hbm">
+	<class name="Journal" table="Journal" lazy="false">
+		<id name="id_Journal" column="Id_Journal" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+	
+		<many-to-one name="facture" class="Facture" cascade="all">
+            <column name="id_Fac" not-null="true" />
+        </many-to-one>
+		
+		<property name="date_Fct" column="Date_Fct" type="date" not-null="true" lazy="false"/>
+		<property name="libelle" column="Libelle" type="string" length="255" not-null="true" lazy="false"/>
+	</class>
+</hibernate-mapping>
